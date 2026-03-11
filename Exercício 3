@@ -1,5 +1,6 @@
 using System;
 
+// ---------- EXERCÍCIO 3 ----------
 interface IVeiculo
 {
     void Mover();
@@ -21,14 +22,69 @@ class Bicicleta : IVeiculo
     }
 }
 
+// ---------- EXERCÍCIO 4 ----------
+interface IVoar
+{
+    void Voar();
+}
+
+interface INadar
+{
+    void Nadar();
+}
+
+class Pato : IVoar, INadar
+{
+    public void Voar()
+    {
+        Console.WriteLine("O pato está voando");
+    }
+
+    public void Nadar()
+    {
+        Console.WriteLine("O pato está nadando");
+    }
+}
+
+class Aguia : IVoar
+{
+    public void Voar()
+    {
+        Console.WriteLine("A águia está voando");
+    }
+}
+
+class Peixe : INadar
+{
+    public void Nadar()
+    {
+        Console.WriteLine("O peixe está nadando");
+    }
+}
+
 class Program
 {
     static void Main()
     {
+        // Exercício 3
         Carro carro = new Carro();
         Bicicleta bicicleta = new Bicicleta();
 
         carro.Mover();
         bicicleta.Mover();
+
+        Console.WriteLine();
+
+        // Exercício 4
+        Pato pato = new Pato();
+        Aguia aguia = new Aguia();
+        Peixe peixe = new Peixe();
+
+        pato.Voar();
+        pato.Nadar();
+
+        aguia.Voar();
+
+        peixe.Nadar();
     }
 }
