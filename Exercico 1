@@ -1,0 +1,72 @@
+using System;
+
+class Animal
+{
+    public string Nome { get; set; }
+
+    public Animal(string nome)
+    {
+        Nome = nome;
+    }
+
+    public virtual void EmitirSom()
+    {
+        Console.WriteLine("Som genérico do animal");
+    }
+}
+
+class Cachorro : Animal
+{
+    public Cachorro(string nome) : base(nome)
+    {
+    }
+
+    public override void EmitirSom()
+    {
+        Console.WriteLine("Au Au");
+    }
+}
+
+class Item
+{
+    public string Nome { get; set; }
+    public double Preco { get; set; }
+
+    public Item(string nome, double preco)
+    {
+        Nome = nome;
+        Preco = preco;
+    }
+}
+
+class Pedido
+{
+    public Item Item { get; set; }
+
+    public Pedido(Item item)
+    {
+        Item = item;
+    }
+
+    public void MostrarPedido()
+    {
+        Console.WriteLine("Item: " + Item.Nome);
+        Console.WriteLine("Preço: " + Item.Preco);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal animal = new Animal("Animal");
+        animal.EmitirSom();
+
+        Cachorro cachorro = new Cachorro("Rex");
+        cachorro.EmitirSom();
+
+        Item item = new Item("Notebook", 3500);
+        Pedido pedido = new Pedido(item);
+        pedido.MostrarPedido();
+    }
+}
